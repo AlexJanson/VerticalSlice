@@ -1,0 +1,54 @@
+Git Flow werkt met branches:
+
+   master (hier pushen we nooit in)
+-----o---------------------------------------o (laatste merge aan het einde van het project)
+      \ develop			    	    /
+       o--------o------------------o-------o
+		 \ feature/{naam} / <- (merge de feature branch naar de develop branch)
+		  o-------o------o
+		   (git push -u origin {naam branch})
+
+General Rules:
+
+- Master branch pushen we nooit in;
+- De develop branch is er om te testen of alle branch merges werken,
+  als er iets niet meer werkt gaat de git master erachter aan.
+- De branches volgen allemaal de zelfde naam confentie.
+- Niemand merged branches! Behalve de git master!
+- We hebben allemaal onze eigen scene! (Maak prefabs van de dingen waarvan je het in de main scene wilt hebben.)
+
+How To:
+
+- git branch feature/{naam} # Dit maakt een branch aan
+- git checkout (naam branch) # Dit switcht de branch
+- git push -u origin (naam branch) # Dit pusht naar de branch
+
+Gotchas: (dingen die vaak over het hoofd worden gezien)
+=======
+Git Flow werkt met branches:
+
+   master (hier pushen we nooit in)
+-----o---------------------------------------o (laatste merge aan het einde van het project)
+      \ develop			    	    /
+       o--------o------------------o-------o
+		 \ feature/{naam} / <- (merge de feature branch naar de develop branch)
+		  o-------o------o
+		   (git push -u origin {naam branch})
+
+General Rules:
+
+- Master branch pushen we nooit in;
+- De develop branch is er om te testen of alle branch merges werken,
+  als er iets niet meer werkt gaat de git master erachter aan.
+- De branches volgen allemaal de zelfde naam confentie.
+- Niemand merged branches! Behalve de git master!
+- We hebben allemaal onze eigen scene! (Maak prefabs van de dingen waarvan je het in de main scene wilt hebben.)
+
+How To:
+
+- git branch feature/{naam} # Dit maakt een branch aan
+- git checkout (naam branch) # Dit switcht de branch
+- git push -u origin (naam branch) # Dit pusht naar de branch
+
+Gotchas: (dingen die vaak over het hoofd worden gezien)
+- Je doet | git branch feature/{naam} | op de branch waarvan je een kopie wilt!
