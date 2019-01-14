@@ -15,20 +15,38 @@ public abstract class Enemy : MonoBehaviour {
 
     private bool isAttackOnCooldown;
 
+    [SerializeField]
     protected float attackRange;
     protected float walkingDistance;
-    protected float moveSpeed; //move speed: slow = 0.01f, normal = 0.05f, fast = 0.1f
+
+    [SerializeField]
+    protected float moveSpeed;
+
+    protected EnemyState state;
+
+    private Animator animator;
 
     public abstract void Attack();
 
+    private void SetState(EnemyState enemyState)
+    {
+        state = enemyState;
+
+        //TODO EDIT ANIMATION STATE VARIABLE
+    }
+
     private void Start()
     {
-      //  player = FindObjectOfType<>();
+      //  animator = GetComponent<Animator>();
+        player = FindObjectOfType<PlayerShoot>().gameObject;
+
+        state = EnemyState.IDLE;
     }
 
     protected void Move(Vector2 position)
     {
-        transform.position = Vector2.MoveTowards(transform.position, position, moveSpeed);
+        state = EnemyState.MOVE;
+        //transform.position = Vector2.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
     }
 
     protected bool IsPlayerClose()
@@ -41,6 +59,12 @@ public abstract class Enemy : MonoBehaviour {
         if (!isAttackOnCooldown)
         {
             StartCoroutine(AttackCooldown());
+
+            // We gaan ervan uit dat wanneer de enemy kan attacken dat hij dat ook gaat doen,
+            // zorg er daarom voor dat je eerst checked of de enemy dichtbij genoeg is en daarna pas checked of hij kan attacken.
+
+            state = EnemyState.ATTACK;
+
             return true;
         }
 
@@ -53,5 +77,9 @@ public abstract class Enemy : MonoBehaviour {
         yield return new WaitForSeconds(attackCooldownInSeconds);
         isAttackOnCooldown = false;
     }
-    
+}
+
+public enum EnemyState
+{
+    MOVE, ATTACK, IDLE, DEATH
 }

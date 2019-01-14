@@ -15,9 +15,16 @@ public class Cow : Enemy {
 
         
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void FixedUpdate()
+    {
+        if (IsPlayerClose()) return;
+    
+        Move(player.transform.position);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (IsPlayerClose())
         {
             Attack();
