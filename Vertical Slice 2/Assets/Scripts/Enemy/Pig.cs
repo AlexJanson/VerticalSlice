@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pig : Enemy
-{
+public class Pig : Enemy {
 
-    private void Start()
-    {
-        moveSpeed = 0.05f;
-        walkingDistance = 10.0f;
-        attackRange = 1.5f;
-        health = 250;
-    }
     public override void Attack()
     {
          
@@ -20,7 +12,7 @@ public class Pig : Enemy
     void Update()
     {
         IsPlayerClose();
-        CloseAttackPlayer();
+        //CloseAttackPlayer();
     }
 
   
