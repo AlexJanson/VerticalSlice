@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour {
     [SerializeField]
     protected GameObject player;
 
+    [SerializeField]
     protected int health;
 
     [SerializeField]
@@ -14,14 +15,16 @@ public abstract class Enemy : MonoBehaviour {
 
     private bool isAttackOnCooldown;
 
-    //dit is alleen om the testen of de enemy damage kan doen
-    public int playerTesthealth = 3;
-
     protected float attackRange;
     protected float walkingDistance;
     protected float moveSpeed; //move speed: slow = 0.01f, normal = 0.05f, fast = 0.1f
 
     public abstract void Attack();
+
+    private void Start()
+    {
+      //  player = FindObjectOfType<>();
+    }
 
     protected void Move(Vector2 position)
     {
