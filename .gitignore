@@ -1,9 +1,9 @@
-Vertical Slice 2/[Ll]ibrary/
-Vertical Slice 2/[Tt]emp/
-Vertical Slice 2/[Oo]bj/
-Vertical Slice 2/[Bb]uild/
-Vertical Slice 2/[Bb]uilds/
-Vertical Slice 2/Assets/AssetStoreTools*
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
 
 # Visual Studio cache directory
 .vs/
