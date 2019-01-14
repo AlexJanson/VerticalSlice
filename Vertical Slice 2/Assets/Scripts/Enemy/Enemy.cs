@@ -4,48 +4,84 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour {
 
+    [SerializeField]
+    protected Transform Player;
+
+    [SerializeField]
     private GameObject player;
-    private int health;
-    private float attackRange;
-    protected float attackDelay;
-    private bool isAttackOnCooldown;
+
+    private Vector3 v_diff;
+    private float atan2;
+
+    protected int health;
+    private int attackTimer;
+
+    //dit is alleen om the testen of de enemy damage kan doen
+    public int playerTesthealth = 3;
+    
+    private bool follow;
+    private bool attack = true;
+
+
+    protected float attackRange;
+    protected float walkingDistance;
+    protected float moveSpeed; //move speed: slow = 0.01f, normal = 0.05f, fast = 0.1f
+    
+    //Call every frame
 
     private void Awake()
     {
-      //  player = GetComponent<>();
+        //  player = GetComponent<>();
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        isAttackOnCooldown = false;
-    }
-
-    public abstract void Attack();
+   public abstract void Attack();
 
     public bool IsPlayerClose()
     {
+        
+        //Calculate distance between player
+        float distance = Vector2.Distance(transform.position, Player.position);
+        //Debug.Log(distance);
+        //If the distance is smaller than the walkingDistance
+        if (distance < walkingDistance && follow == true)
+        {
+           
+
+            transform.position = Vector3.MoveTowards(transform.position, Player.position, moveSpeed);
+        }
+        if (distance < 1.5f)
+        {
+           
+            follow = false;
+        }
+        if (distance > 2.0f)
+        {          
+            follow = true;
+        }
         return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
     }
 
-    private IEnumerator AttackCooldown()
+    public bool CloseAttackPlayer()
     {
-        if (!isAttackOnCooldown)
-        {
-            isAttackOnCooldown = true;
-            yield return new WaitForSeconds(attackDelay);
-            isAttackOnCooldown = false;
-        }
-    }
 
-    protected bool CanAttack()
-    {
-        if (!isAttackOnCooldown)
-        {
-            AttackCooldown();
-            return true;
-        }
+        float distance = Vector2.Distance(transform.position, Player.position);
 
-        return false;
+        if (distance <= attackRange && attack == true)
+        {
+            playerTesthealth -= 1;
+            Debug.Log(playerTesthealth);
+            attack = false;
+        }
+        if(attack == false)
+        {
+            attackTimer++;
+        }
+        if(attackTimer == 100)
+        {
+            attack = true;
+            attackTimer = 0;
+        }
+        return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
     }
+    
 }

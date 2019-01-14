@@ -15,6 +15,8 @@ public abstract class Enemy : MonoBehaviour {
 
     protected int health;
     private int attackTimer;
+
+    //dit is alleen om the testen of de enemy damage kan doen
     public int playerTesthealth = 3;
     
     private bool follow;
