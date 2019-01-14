@@ -20,14 +20,19 @@ public class movement : MonoBehaviour {
 
         if (h == 0f && v == 0f) {
             player.velocity = Vector2.zero;
-        } else {
-            
-           
-            player.AddRelativeForce((Vector2.right * speed) * h / 4);
-            player.AddRelativeForce((Vector2.up * speed) * v / 4);
         }
-     
-        
+        else if (h == 0 && v != 0)
+        {
+            player.velocity = new Vector2(0, player.velocity.y);
+            player.AddRelativeForce((Vector2.up * speed) * v / 2);
+        }
+        else if (h != 0 && v == 0)
+        {
+            player.AddRelativeForce((Vector2.right * speed) * h / 2);
+            player.velocity = new Vector2(player.velocity.x, 0);
+        }
+
+
         //if (player.velocity.x != 0f)
         //{
         //    player.velocity = new Vector2(player.velocity.x, player.velocity.x);
