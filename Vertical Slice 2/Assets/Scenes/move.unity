@@ -200,8 +200,8 @@ GameObject:
   - component: {fileID: 1045397535}
   - component: {fileID: 1045397534}
   - component: {fileID: 1045397533}
-  - component: {fileID: 1045397532}
   - component: {fileID: 1045397536}
+  - component: {fileID: 1045397532}
   m_Layer: 0
   m_Name: boer
   m_TagString: Untagged
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f39f73c601c833488720fa8e244f9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 40
 --- !u!50 &1045397533
 Rigidbody2D:
   serializedVersion: 4
