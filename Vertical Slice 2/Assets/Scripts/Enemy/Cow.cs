@@ -11,8 +11,9 @@ public class Cow : Enemy {
     {
         if (!CanAttack()) return;
 
-        GameObject projectile = Instantiate(this.projectile, transform.position, this.projectile.transform.rotation);
-
+        CowMilk projectile = Instantiate(this.projectile, transform.position, this.projectile.transform.rotation).GetComponent<CowMilk>();
+        projectile.playerDeath = player;
+        projectile.baseDamage = baseDamage;
         
     }
 

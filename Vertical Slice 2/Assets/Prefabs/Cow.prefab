@@ -83,6 +83,7 @@ MonoBehaviour:
   attackCooldownInSeconds: 2
   attackRange: 40
   moveSpeed: 10
+  baseDamage: 20
   projectile: {fileID: 1459409896473656, guid: 5fe7288c6f91da049bd9c57c80eb2f43, type: 2}
 --- !u!212 &212351404417240098
 SpriteRenderer:

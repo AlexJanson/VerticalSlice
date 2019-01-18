@@ -10,9 +10,6 @@ public class CowMilk : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    [SerializeField]
-    protected Vector2 destination;
-
     private Vector2[] point = new Vector2[3];
 
     private float startTime;
@@ -21,12 +18,18 @@ public class CowMilk : MonoBehaviour
 
     float count = 0;
 
+    [HideInInspector]
+    public PlayerDeath playerDeath;
+
+    [HideInInspector]
+    public float baseDamage;
+
     void Start()
     {
 
         point[0] = gameObject.transform.position;
 
-        point[2] = destination;
+        point[2] = playerDeath.gameObject.transform.position;
 
         point[1] = point[0] + (point[2] - point[0]) / 2 + Vector2.up * 6.0f;
 
@@ -42,7 +45,12 @@ public class CowMilk : MonoBehaviour
     void Update()
     {
 
-        if (Vector2.Distance(point[0], gameObject.transform.position) >= journeyLength)
+        if (Vector2.Distance(point[0], gameObject.transform.position) >= (journeyLength))
+        {
+            Destroy(gameObject);
+        } else
+
+        if (Vector2.Distance(playerDeath.gameObject.transform.position, gameObject.transform.position) < 4)
         {
             Hit();
         }
@@ -62,5 +70,7 @@ public class CowMilk : MonoBehaviour
     private void Hit()
     {
        Destroy(gameObject);
+
+        playerDeath.Damage(baseDamage, gameObject);
     }
 }

@@ -10,6 +10,8 @@ public class Pig : Enemy {
 
         //TODO DO Tackle
 
+        player.Damage(baseDamage, gameObject);
+
 
     }
 
