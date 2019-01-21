@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour {
 
-
-
     [SerializeField]
     private GameObject AmmoBag;
 
@@ -51,18 +49,15 @@ public class PlayerShoot : MonoBehaviour {
                 Destroy(AmmoBag);
                 transformAmmoBag = null;
                 MaxAmmo += 15;
-              
             }
         }
         if (Input.GetKeyDown("r"))
         {
             if(currentAmmo < ammo && MaxAmmo > 0)
             {
-
                 // zorg ervoor dat max ammo niet in de min gaat
 
                 Debug.Log("reload");
-
                 
                 if (MaxAmmo - (ammo - currentAmmo) < 0)
                 {
@@ -90,10 +85,6 @@ public class PlayerShoot : MonoBehaviour {
             {
                 Debug.Log("no ammo");
             }
-            
         }
-
-     
-
     }
 }
