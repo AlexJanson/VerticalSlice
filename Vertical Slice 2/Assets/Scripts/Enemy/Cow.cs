@@ -10,19 +10,18 @@ public class Cow : Enemy {
     public override void Attack()
     {
         if (!CanAttack()) return;
-
-        CowMilk projectile = Instantiate(this.projectile, transform.position, this.projectile.transform.rotation).GetComponent<CowMilk>();
-        projectile.playerDeath = player;
-        projectile.baseDamage = baseDamage;
+            if (player == null) return;
+                CowMilk projectile = Instantiate(this.projectile, transform.position, this.projectile.transform.rotation).GetComponent<CowMilk>();
+                projectile.playerDeath = player;
+                projectile.baseDamage = baseDamage;
         
     }
 
     private void FixedUpdate()
     {
         if (IsPlayerClose()) return;
-
-        if (player != null)
-            Move(player.transform.position);
+            if (player != null)
+                Move(player.transform.position);
     }
 
     // Update is called once per frame

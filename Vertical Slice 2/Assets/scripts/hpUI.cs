@@ -11,16 +11,31 @@ public class hpUI : MonoBehaviour {
     private float begin;
     static float t = 0.0f;
 
+    private bool death;
+
     // Use this for initialization
     void Start () {
         playerDeath = FindObjectOfType<PlayerDeath>();
+
+        playerDeath.playerDeathAction += Death;
+
         HeartFilled.type = Image.Type.Filled;
         HeartFilled.fillMethod = Image.FillMethod.Vertical;
         begin = playerDeath.health;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+
+        if (death && HeartFilled.fillAmount > 0)
+        {
+            death = true;
+            HeartFilled.fillAmount = Mathf.Lerp((begin / 100.0f), (0 / 100.0f), t);
+            t += 1.0f * Time.deltaTime;
+            healthPercentage.GetComponent<Text>().text = "" + Mathf.Round(HeartFilled.fillAmount * 100f);
+        }
+
+        if (playerDeath == null) return;
 
         if(playerDeath.health != begin) {
 
@@ -33,5 +48,11 @@ public class hpUI : MonoBehaviour {
             begin = playerDeath.health;
             t = 0.0f;
         }
+    }
+
+    private void Death()
+    {
+        death = true;
+
     }
 }
