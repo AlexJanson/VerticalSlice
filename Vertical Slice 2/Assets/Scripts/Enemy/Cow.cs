@@ -20,8 +20,9 @@ public class Cow : Enemy {
     private void FixedUpdate()
     {
         if (IsPlayerClose()) return;
-    
-        Move(player.transform.position);
+
+        if (player != null)
+            Move(player.transform.position);
     }
 
     // Update is called once per frame

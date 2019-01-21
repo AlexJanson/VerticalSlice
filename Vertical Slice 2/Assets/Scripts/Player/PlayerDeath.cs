@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +18,7 @@ public class PlayerDeath : MonoBehaviour {
     // Use this for initialization
     void Start () {
         playerDamageAction += Knockback;
+        playerDeathAction += Death;
 	}
 	
 	// Update is called once per frame
@@ -92,5 +93,10 @@ public class PlayerDeath : MonoBehaviour {
             knockback = false;
 
         }
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }

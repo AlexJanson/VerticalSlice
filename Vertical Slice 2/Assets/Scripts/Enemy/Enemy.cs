@@ -54,7 +54,10 @@ public abstract class Enemy : MonoBehaviour {
 
     protected bool IsPlayerClose()
     {
-        return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
+        if (player != null)
+            return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
+
+        return false;
     }
     
     protected bool CanAttack()
