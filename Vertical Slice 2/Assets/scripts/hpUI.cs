@@ -7,7 +7,7 @@ public class hpUI : MonoBehaviour {
 
     public Image HeartFilled;
     public GameObject healthPercentage;
-    public PlayerDeath playerDeath;
+    private PlayerDeath playerDeath;
     private float begin;
     static float t = 0.0f;
 
