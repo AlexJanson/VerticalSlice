@@ -255,7 +255,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 30
 --- !u!222 &389859900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -670,8 +670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e5ea87e8c2cfd41abd58267ff1084d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 80
-  ammo: 15
+  hp: 100
+  ammo: 30
   plank: 3
 --- !u!4 &1661615031
 Transform:
