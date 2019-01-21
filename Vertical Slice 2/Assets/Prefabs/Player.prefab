@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50072477672694644}
   - component: {fileID: 114908923540336416}
   - component: {fileID: 114856089675144044}
+  - component: {fileID: 114642726448439922}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -75,9 +76,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737e0dd405bf73447a1ee2454ab53f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxAmmo: 90
+  currentAmmo: 30
   bulletPrefab: {fileID: 1559487267760188, guid: 5c5152ccdd633d54d81c3a0d994ce13e,
     type: 2}
   fireDelay: 2
+--- !u!114 &114642726448439922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959519251133652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: debf4a0e6c9244345a9f32893c75ba7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114856089675144044
 MonoBehaviour:
   m_ObjectHideFlags: 1
