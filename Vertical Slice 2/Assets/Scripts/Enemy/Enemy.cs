@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour {
 
     [SerializeField]
-    protected GameObject player;
+    protected PlayerDeath player;
 
     [SerializeField]
     protected int health;
@@ -26,6 +26,9 @@ public abstract class Enemy : MonoBehaviour {
 
     private Animator animator;
 
+    [SerializeField]
+    protected float baseDamage;
+
     public abstract void Attack();
 
     private void SetState(EnemyState enemyState)
@@ -38,7 +41,7 @@ public abstract class Enemy : MonoBehaviour {
     private void Start()
     {
       //  animator = GetComponent<Animator>();
-        player = FindObjectOfType<PlayerShoot>().gameObject;
+        player = FindObjectOfType<PlayerDeath>();
 
         state = EnemyState.IDLE;
     }
@@ -51,7 +54,10 @@ public abstract class Enemy : MonoBehaviour {
 
     protected bool IsPlayerClose()
     {
-        return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
+        if (player != null)
+            return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
+
+        return false;
     }
     
     protected bool CanAttack()
