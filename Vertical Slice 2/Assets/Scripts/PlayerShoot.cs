@@ -2,16 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour {
+public class PlayerShoot : MonoBehaviour
+{
 
-<<<<<<< HEAD
-    [SerializeField]
-    private GameObject AmmoBag;
-
-    [SerializeField]
-    private Transform transformAmmoBag;
-=======
->>>>>>> origin/player-shooting
 
     public int MaxAmmo = 90;
     private int ammo = 30;
@@ -38,13 +31,11 @@ public class PlayerShoot : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo > 0) {
 
             currentAmmo--;
-            
-                 
+
+
             nextFire = Time.time + fireDelay;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        }
-        else if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo == 0)
-        {
+        } else if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo == 0) {
             Debug.Log("Your gun is empty RELOAD!");
         }
 
@@ -54,57 +45,31 @@ public class PlayerShoot : MonoBehaviour {
 
     private void getAmmo()
     {
-                MaxAmmo += 15;                            
+        MaxAmmo += 15;
     }
 
-<<<<<<< HEAD
-            if (distance < 1.0f)
-            {
-                Destroy(AmmoBag);
-                transformAmmoBag = null;
-                MaxAmmo += 15;
-            }
-        }
-=======
     private void Reload()
     {
->>>>>>> origin/player-shooting
-        if (Input.GetKeyDown("r"))
-        {
-            if (currentAmmo < ammo && MaxAmmo > 0)
-            {
-<<<<<<< HEAD
-                // zorg ervoor dat max ammo niet in de min gaat
-
-                Debug.Log("reload");
-                
-=======
+        if (Input.GetKeyDown("r")) {
+            if (currentAmmo < ammo && MaxAmmo > 0) {
 
                 Debug.Log("reload");
 
 
->>>>>>> origin/player-shooting
-                if (MaxAmmo - (ammo - currentAmmo) < 0)
-                {
+                if (MaxAmmo - (ammo - currentAmmo) < 0) {
                     int missingBullets = ((ammo - currentAmmo) - MaxAmmo);
                     currentAmmo = ammo;
                     currentAmmo -= missingBullets;
                     MaxAmmo = 0;
-                }
-                else
-                {
+                } else {
                     MaxAmmo -= (ammo - currentAmmo);
                     currentAmmo = ammo;
                 }
 
 
-            }
-            else if (currentAmmo == ammo)
-            {
+            } else if (currentAmmo == ammo) {
                 Debug.Log("ammo full");
-            }
-            else if (MaxAmmo <= 0)
-            {
+            } else if (MaxAmmo <= 0) {
                 Debug.Log("no ammo");
             }
         }
