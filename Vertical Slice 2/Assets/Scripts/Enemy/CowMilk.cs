@@ -44,10 +44,16 @@ public class CowMilk : MonoBehaviour
 
     void Update()
     {
+        if (playerDeath == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         if (Vector2.Distance(point[0], gameObject.transform.position) >= (journeyLength))
         {
             Destroy(gameObject);
+
         } else
 
         if (Vector2.Distance(playerDeath.gameObject.transform.position, gameObject.transform.position) < 4)

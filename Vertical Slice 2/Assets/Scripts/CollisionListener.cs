@@ -13,6 +13,7 @@ public class CollisionListener : MonoBehaviour
             if (collision.gameObject.tag == "ammo")
             {
              Destroy(collision.gameObject);
+            if (ammoCollected != null)
               ammoCollected();
             }            
     }

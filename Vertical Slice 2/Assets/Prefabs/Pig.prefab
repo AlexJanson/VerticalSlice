@@ -75,15 +75,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738074646438672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8022927a99126fb41809f9e665873d9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 15caed1f1e4b08b4c849911a4725d947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  health: 0
+  health: 100
   attackCooldownInSeconds: 2
-  attackRange: 20
+  attackRange: 5
   moveSpeed: 10
-  baseDamage: 5
+  baseDamage: 10
 --- !u!212 &212056266473559992
 SpriteRenderer:
   m_ObjectHideFlags: 1
