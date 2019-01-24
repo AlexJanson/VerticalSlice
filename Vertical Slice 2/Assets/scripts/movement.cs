@@ -22,6 +22,8 @@ public class movement : MonoBehaviour {
         player.AddRelativeForce(Vector2.up * Time.deltaTime * speed * Input.GetAxis("Vertical"));
         player.AddRelativeForce(Vector2.right * Time.deltaTime * speed * Input.GetAxis("Horizontal"));
 
+        player.velocity = new Vector2(h*speed,v*speed);
+
         if (h == 0f && v == 0f)
         {
             player.velocity = Vector2.zero;
