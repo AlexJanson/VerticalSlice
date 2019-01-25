@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 1800806524}
   - component: {fileID: 1800806525}
   m_Layer: 0
-  m_Name: walk cycle_0
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f39f73c601c833488720fa8e244f9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 300
 --- !u!50 &1800806524
 Rigidbody2D:
   serializedVersion: 4

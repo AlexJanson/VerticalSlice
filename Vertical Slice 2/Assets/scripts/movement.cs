@@ -31,10 +31,10 @@ public class movement : MonoBehaviour {
         {
             isRight = -1;
         }
-        if (pz.y > transform.position.y+1.5)
+        if (pz.y > transform.position.y+2)
         {
             isBack = 1;
-        }else if (pz.y < transform.position.y-1.5)
+        }else if (pz.y < transform.position.y-2)
         {
             isBack = -1;
         }
