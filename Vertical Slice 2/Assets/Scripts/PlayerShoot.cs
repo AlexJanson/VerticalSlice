@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour {
 
+    [SerializeField]
+    private GameObject BigAmmoBag;
 
+    public event Action<int> playerShootAction;
+    public event Action<int> chickenAllAmmo;
+    public event Action<int> Fullammo;
     public int MaxAmmo = 90;
     private int ammo = 30;
     public int currentAmmo = 30;
@@ -14,6 +20,9 @@ public class PlayerShoot : MonoBehaviour {
 
     float nextFire = 0;
     Vector3 direction;
+
+
+
 
     private void Awake()
     {
@@ -30,7 +39,8 @@ public class PlayerShoot : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo > 0) {
 
             currentAmmo--;
-            
+
+            playerShootAction(currentAmmo);
                  
             nextFire = Time.time + fireDelay;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
@@ -40,13 +50,22 @@ public class PlayerShoot : MonoBehaviour {
             Debug.Log("Your gun is empty RELOAD!");
         }
 
+        if (MaxAmmo > 90)
+        {
+            MaxAmmo = 90;
+        }
+
+        if (Vector2.Distance(BigAmmoBag.transform.position, BigAmmoBag.transform.position) < 5 && Input.GetKeyDown("e"))
+        {
+            MaxAmmo += 30;
+        }
         Reload();
 
     }
 
     private void getAmmo()
     {
-                MaxAmmo += 15;                            
+           MaxAmmo += 15;
     }
 
     private void Reload()
@@ -65,11 +84,15 @@ public class PlayerShoot : MonoBehaviour {
                     currentAmmo = ammo;
                     currentAmmo -= missingBullets;
                     MaxAmmo = 0;
+                    chickenAllAmmo(MaxAmmo);
+                    playerShootAction(currentAmmo);
                 }
                 else
                 {
                     MaxAmmo -= (ammo - currentAmmo);
                     currentAmmo = ammo;
+                    playerShootAction(currentAmmo);
+                    chickenAllAmmo(MaxAmmo);
                 }
 
 
@@ -82,6 +105,7 @@ public class PlayerShoot : MonoBehaviour {
             {
                 Debug.Log("no ammo");
             }
+          
         }
     }
 }

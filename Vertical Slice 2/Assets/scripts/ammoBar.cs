@@ -9,18 +9,33 @@ public class ammoBar : MonoBehaviour {
     public GameObject AmmoCounter;
     private player Player;
     public GameObject UIscripts;
+    public Text UIallAmmo;
+
+    private PlayerShoot playerUpdateClip;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        playerUpdateClip = FindObjectOfType<PlayerShoot>();
+        playerUpdateClip.playerShootAction += UpdateAmmo;
+        playerUpdateClip.chickenAllAmmo += UpdateFullAmmo;
+    }
 	
 	// Update is called once per frame
 	void Update () {
         Player = UIscripts.GetComponent<player>();
         AmmoFilled.type = Image.Type.Filled;
         AmmoFilled.fillMethod = Image.FillMethod.Horizontal;
-        AmmoFilled.fillAmount = Player.ammo / 30f;
-        AmmoCounter.GetComponent<Text>().text = Player.ammo.ToString();
+      
+    }
+
+    private void UpdateAmmo(int ammo)
+    {
+        AmmoFilled.fillAmount = ammo / 30f;
+        AmmoCounter.GetComponent<Text>().text = ammo.ToString();
+    }
+
+    private void UpdateFullAmmo(int FullAmmo)
+    {
+        AmmoCounter.GetComponent<Text>().text = FullAmmo.ToString();
     }
 }
