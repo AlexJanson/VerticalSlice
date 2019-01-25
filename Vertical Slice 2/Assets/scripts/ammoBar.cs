@@ -9,7 +9,8 @@ public class ammoBar : MonoBehaviour {
     public GameObject AmmoCounter;
     private player Player;
     public GameObject UIscripts;
-    public Text UIallAmmo;
+    //public Text UIallAmmo;
+    public Text UIAmmo;
 
     private PlayerShoot playerUpdateClip;
 
@@ -17,7 +18,7 @@ public class ammoBar : MonoBehaviour {
     void Start () {
         playerUpdateClip = FindObjectOfType<PlayerShoot>();
         playerUpdateClip.playerShootAction += UpdateAmmo;
-        playerUpdateClip.chickenAllAmmo += UpdateFullAmmo;
+       
     }
 	
 	// Update is called once per frame
@@ -25,7 +26,8 @@ public class ammoBar : MonoBehaviour {
         Player = UIscripts.GetComponent<player>();
         AmmoFilled.type = Image.Type.Filled;
         AmmoFilled.fillMethod = Image.FillMethod.Horizontal;
-      
+
+        UIAmmo.text = playerUpdateClip.currentAmmo + "/" + playerUpdateClip.MaxAmmo;
     }
 
     private void UpdateAmmo(int ammo)
@@ -34,8 +36,5 @@ public class ammoBar : MonoBehaviour {
         AmmoCounter.GetComponent<Text>().text = ammo.ToString();
     }
 
-    private void UpdateFullAmmo(int FullAmmo)
-    {
-        AmmoCounter.GetComponent<Text>().text = FullAmmo.ToString();
-    }
+    
 }

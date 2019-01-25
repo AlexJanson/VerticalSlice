@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour {
 
+
+    [SerializeField]
+    private GameObject Player;
+
     [SerializeField]
     private GameObject BigAmmoBag;
+
+    [SerializeField]
+    private GameObject EButton;
 
     public event Action<int> playerShootAction;
     public event Action<int> chickenAllAmmo;
@@ -54,11 +61,23 @@ public class PlayerShoot : MonoBehaviour {
         {
             MaxAmmo = 90;
         }
+        Debug.Log(Vector2.Distance(BigAmmoBag.transform.position, gameObject.transform.position));
 
-        if (Vector2.Distance(BigAmmoBag.transform.position, BigAmmoBag.transform.position) < 5 && Input.GetKeyDown("e"))
-        {
-            MaxAmmo += 30;
+        if (Vector2.Distance(BigAmmoBag.transform.position, gameObject.transform.position) < 3) {
+
+            EButton.SetActive(true);
+
+            if (Input.GetKeyDown("e"))
+            {
+                
+                    MaxAmmo += 30;
+             }
         }
+        else
+        {
+            EButton.SetActive(false);
+        }
+     
         Reload();
 
     }
@@ -92,7 +111,7 @@ public class PlayerShoot : MonoBehaviour {
                     MaxAmmo -= (ammo - currentAmmo);
                     currentAmmo = ammo;
                     playerShootAction(currentAmmo);
-                    chickenAllAmmo(MaxAmmo);
+
                 }
 
 
