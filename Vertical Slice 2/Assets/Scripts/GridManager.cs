@@ -5,7 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour {
 
-    NodeData[,] map;
+    [HideInInspector]
+    public NodeData[,] map;
     public Grid grid;
     public Tilemap floor;
     public List<Tilemap> obstacleLayers;
@@ -13,23 +14,24 @@ public class GridManager : MonoBehaviour {
     public GameObject nodePrefab;
     private List<Node> path;
 
-    private void Start()
+    private void Awake()
     {
         GenerateGrid();
     }
 
     public void GenerateGrid() {
         map = CreateNodesFromTilemaps.CreateNodes(grid, floor, obstacleLayers, transform);
-        //SpawnNodes(map);
 
-        path = AStarPath.FindPath(new Vector2(5, 10), new Vector2(7, 10), map);
+        SpawnNodes(map);
+
+        path = AStarPath.FindPath(new Vector2(-7.9f, -.2f), new Vector2(-.1f, -.1f), map);
         StartCoroutine(DelayedPath());
 	}
 
     IEnumerator DelayedPath()
     {
         yield return new WaitForSeconds(3f);
-        path = AStarPath.FindPath(new Vector2(6.1237123f, 6.6123f), new Vector2(17.99f, 3f), map);
+        //path = AStarPath.FindPath(new Vector2(6.1237123f, 6.6123f), new Vector2(17.99f, 3f), map);
         yield return null;
     }
 

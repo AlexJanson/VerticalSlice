@@ -33,6 +33,10 @@ public abstract class Enemy : MonoBehaviour {
 
     public event Action<float, float> enemyDamageAction;
 
+    private List<Node> path;
+
+    private GridManager gridManager;
+
     public abstract void Attack();
 
     private void SetState(EnemyState enemyState)
@@ -50,18 +54,64 @@ public abstract class Enemy : MonoBehaviour {
         player = FindObjectOfType<PlayerDeath>();
 
         state = EnemyState.IDLE;
+
+        gridManager = FindObjectOfType<GridManager>();
     }
 
     protected void Move(Vector2 position)
     {
         state = EnemyState.MOVE;
-        //transform.position = Vector2.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
+        // transform.position = Vector2.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
+
+        path = AStarPath.FindPath(new Vector2(transform.position.x, transform.position.y), new Vector2(player.gameObject.transform.position.x, player.gameObject.transform.position.y), gridManager.map);
+
+        if (path != null)
+        {
+            path.Reverse();
+
+            StartCoroutine(FollowPath(path));
+        }
     }
+
+    IEnumerator FollowPath(List<Node> waypoints)
+    {
+
+        transform.position = waypoints[0].position;
+
+        int targetWaypointIndex = 0;
+        Vector3 targetWaypoint = waypoints[targetWaypointIndex].position;
+
+        while (new Vector2(transform.position.x, transform.position.y) != waypoints[waypoints.Count].position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, moveSpeed * Time.deltaTime);
+            if (transform.position == targetWaypoint)
+            {
+                if (targetWaypointIndex < waypoints.Count - 1)
+                {
+                    targetWaypointIndex++;
+                    targetWaypoint = waypoints[targetWaypointIndex].position;
+                }
+            }
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
+
 
     protected bool IsPlayerClose()
     {
         if (player != null)
-            return Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
+        {
+            bool isClose = Vector2.Distance(player.transform.position, gameObject.transform.position) < attackRange;
+
+            if (isClose)
+            {
+                StopCoroutine(FollowPath(null));
+            }
+
+            return isClose;
+        }
 
         return false;
     }

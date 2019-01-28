@@ -51,6 +51,7 @@ public static class AStarPath {
                 }
             }
         }
+
         closedList.Clear();
         return null;
     }
