@@ -4,7 +4,14 @@ using UnityEngine;
 
 public static class AStarPath {
 
-	public static List<Node> FindPath(Vector2 start, Vector2 goal, NodeData[,] map)
+    private static int NodeSorter(Node n0, Node n1)
+    {
+        if (n1.fCost < n0.fCost) return 1;
+        if (n1.fCost > n0.fCost) return -1;
+        return 0;
+    }
+
+    public static List<Node> FindPath(Vector2 start, Vector2 goal, NodeData[,] map)
     {
         goal = new Vector2(Mathf.Round(goal.x), Mathf.Round(goal.y));
         List<Node> openList = new List<Node>();
@@ -61,12 +68,5 @@ public static class AStarPath {
         float dx = tile.x - goal.x;
         float dy = tile.y - goal.y;
         return Mathf.Sqrt(dx * dx + dy * dy);
-    }
-
-    private static int NodeSorter(Node n0, Node n1)
-    {
-        if (n1.fCost < n0.fCost) return 1;
-        if (n1.fCost > n0.fCost) return -1;
-        return 0;
     }
 }

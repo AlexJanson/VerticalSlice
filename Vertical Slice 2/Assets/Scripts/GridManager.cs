@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour {
 
     public void GenerateGrid() {
         map = CreateNodesFromTilemaps.CreateNodes(grid, floor, obstacleLayers, transform);
-        SpawnNodes(map);
+        //SpawnNodes(map);
 
         path = AStarPath.FindPath(new Vector2(5, 10), new Vector2(7, 10), map);
         StartCoroutine(DelayedPath());
@@ -47,10 +47,12 @@ public class GridManager : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        //Gizmos.DrawSphere(map[7, 10].position, 0.1f);
-        Gizmos.color = Color.red;
-        foreach (Node n in path) {
-            Gizmos.DrawSphere(new Vector2(n.position.x - 11.5f, n.position.y - 5.5f), 0.1f);
+        if (path != null) {
+            //Gizmos.DrawSphere(map[7, 10].position, 0.1f);
+            Gizmos.color = Color.red;
+            foreach (Node n in path) {
+                Gizmos.DrawSphere(new Vector2(n.position.x - 11.5f, n.position.y - 5.5f), 0.1f);
+            }
         }
     }
 }
