@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class hpUI : MonoBehaviour {
 
     public Image HeartFilled;
-    public GameObject healthPercentage;
+    //public GameObject healthPercentage;
     private player Player;
     public GameObject UIscripts;
     private float begin;
@@ -28,7 +28,7 @@ public class hpUI : MonoBehaviour {
 
             HeartFilled.fillAmount = Mathf.Lerp( (begin/100.0f), (Player.hp/100.0f), t);
             t += 0.5f * Time.deltaTime;
-            healthPercentage.GetComponent<Text>().text = Player.hp.ToString();
+            //healthPercentage.GetComponent<Text>().text = Player.hp.ToString();
         }
 
         if (t > 1.0f) {

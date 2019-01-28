@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ammoBar : MonoBehaviour {
 
     public Image AmmoFilled;
-    public GameObject AmmoCounter;
+    //public GameObject AmmoCounter;
     private player Player;
     public GameObject UIscripts;
     private float begin;
@@ -29,7 +29,7 @@ public class ammoBar : MonoBehaviour {
 
             AmmoFilled.fillAmount = Mathf.Lerp((begin / 30.0f), (Player.ammo / 30.0f), t);
             t += 0.5f * Time.deltaTime;
-            AmmoCounter.GetComponent<Text>().text = Player.ammo.ToString();
+            //AmmoCounter.GetComponent<Text>().text = Player.ammo.ToString();
         }
 
         if (t > 1.0f)

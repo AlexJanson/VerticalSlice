@@ -297,7 +297,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -175, y: 49}
-  m_SizeDelta: {x: 0, y: 32}
+  m_SizeDelta: {x: 188, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &482856740
 MonoBehaviour:
@@ -556,7 +556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmmoFilled: {fileID: 568823484}
-  AmmoCounter: {fileID: 389859897}
   UIscripts: {fileID: 1661615029}
 --- !u!1 &692173544
 GameObject:
@@ -691,7 +690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeartFilled: {fileID: 800287069}
-  healthPercentage: {fileID: 268766606}
   UIscripts: {fileID: 1661615029}
 --- !u!114 &800287069
 MonoBehaviour:
@@ -900,6 +898,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1661615031}
   - component: {fileID: 1661615030}
+  - component: {fileID: 1661615032}
+  - component: {fileID: 1661615033}
+  - component: {fileID: 1661615034}
   m_Layer: 0
   m_Name: UIscripts
   m_TagString: Untagged
@@ -935,6 +936,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1661615032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661615029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4521b16143eae74478542e8564335e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIscripts: {fileID: 1661615029}
+--- !u!114 &1661615033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661615029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d602d9edd8dd2954a9f09b455bbb7dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmmoCounter: {fileID: 389859897}
+  UIscripts: {fileID: 1661615029}
+--- !u!114 &1661615034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661615029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f91806f1b417b442b91c94ada958c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmmoCounter: {fileID: 268766606}
+  UIscripts: {fileID: 1661615029}
 --- !u!1 &1731541352
 GameObject:
   m_ObjectHideFlags: 0
