@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour {
 
     [SerializeField]
     protected PlayerDeath player;
 
-    [SerializeField]
-    protected int health;
+    public float maxHealth;
+    protected float health;
 
     [SerializeField]
     private float attackCooldownInSeconds;
@@ -29,6 +31,8 @@ public abstract class Enemy : MonoBehaviour {
     [SerializeField]
     protected float baseDamage;
 
+    public event Action<float, float> enemyDamageAction;
+
     public abstract void Attack();
 
     private void SetState(EnemyState enemyState)
@@ -40,7 +44,9 @@ public abstract class Enemy : MonoBehaviour {
 
     private void Start()
     {
-      //  animator = GetComponent<Animator>();
+        //  animator = GetComponent<Animator>();
+
+        health = maxHealth;
         player = FindObjectOfType<PlayerDeath>();
 
         state = EnemyState.IDLE;
@@ -83,9 +89,26 @@ public abstract class Enemy : MonoBehaviour {
         yield return new WaitForSeconds(attackCooldownInSeconds);
         isAttackOnCooldown = false;
     }
-}
 
-public enum EnemyState
-{
-    MOVE, ATTACK, IDLE, DEATH
+    public void Damage(float damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            health = 0;
+
+            Destroy(gameObject);
+        }
+
+        if (enemyDamageAction != null)
+            enemyDamageAction(health, damage);
+
+
+    }
+
+    public enum EnemyState
+    {
+        MOVE, ATTACK, IDLE, DEATH
+    }
 }
