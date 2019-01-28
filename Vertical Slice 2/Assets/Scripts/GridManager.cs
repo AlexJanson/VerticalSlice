@@ -22,9 +22,10 @@ public class GridManager : MonoBehaviour {
     public void GenerateGrid() {
         map = CreateNodesFromTilemaps.CreateNodes(grid, floor, obstacleLayers, transform);
 
-        SpawnNodes(map);
+        SpawnNodes(map, true);
+        AStarPath.SaveMap(map);
 
-        path = AStarPath.FindPath(new Vector2(-7.9f, -.2f), new Vector2(-.1f, -.1f), map);
+        path = AStarPath.FindPath(new Vector2(-7.9f, -.2f), new Vector2(-.1f, -.1f));
         StartCoroutine(DelayedPath());
 	}
 
@@ -35,14 +36,16 @@ public class GridManager : MonoBehaviour {
         yield return null;
     }
 
-    void SpawnNodes(NodeData[,] _map)
+    void SpawnNodes(NodeData[,] _map, bool showSprite)
     {
         foreach (NodeData n in _map) {
             GameObject node = Instantiate(nodePrefab, n.position, Quaternion.identity);
             node.name = n.name;
+            SpriteRenderer sr = node.GetComponent<SpriteRenderer>();
             if (!n.walkable) {
-                node.GetComponent<SpriteRenderer>().color = Color.red;
+                sr.color = Color.red;
             }
+            sr.enabled = showSprite;
             node.transform.parent = n.parent;
         }
     }

@@ -62,42 +62,42 @@ public abstract class Enemy : MonoBehaviour {
     {
         state = EnemyState.MOVE;
         // transform.position = Vector2.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
-
-        path = AStarPath.FindPath(new Vector2(transform.position.x, transform.position.y), new Vector2(player.gameObject.transform.position.x, player.gameObject.transform.position.y), gridManager.map);
+        
+        Vector2 tilePos = AStarPath.GetTilePosition(transform.position);
+        Vector2 playerTilePos = AStarPath.GetTilePosition(player.transform.position);
+        path = AStarPath.FindPath(tilePos, playerTilePos);
 
         if (path != null)
         {
             path.Reverse();
 
-            StartCoroutine(FollowPath(path));
+            List<Vector2> pathWorldPosition = new List<Vector2>();
+            for (int i = 0; i < path.Count; i++) {
+                pathWorldPosition.Add(AStarPath.GetTileWorldPosition(path[i].position));
+            }
+
+            StartCoroutine(FollowPath(pathWorldPosition));
         }
     }
 
-    IEnumerator FollowPath(List<Node> waypoints)
+    IEnumerator FollowPath(List<Vector2> _path)
     {
+        transform.position = Vector3.MoveTowards(transform.position, transform.position = _path[0], moveSpeed * Time.deltaTime);
 
-        transform.position = waypoints[0].position;
+        int targetWaypointIndex = 1;
+        Vector3 targetWaypoint = _path[targetWaypointIndex];
 
-        int targetWaypointIndex = 0;
-        Vector3 targetWaypoint = waypoints[targetWaypointIndex].position;
-
-        while (new Vector2(transform.position.x, transform.position.y) != waypoints[waypoints.Count].position)
-        {
+        while ((Vector2)transform.position != _path[_path.Count - 1]) {
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, moveSpeed * Time.deltaTime);
-            if (transform.position == targetWaypoint)
-            {
-                if (targetWaypointIndex < waypoints.Count - 1)
-                {
+            if (transform.position == targetWaypoint) {
+                if (targetWaypointIndex < _path.Count - 1) {
                     targetWaypointIndex++;
-                    targetWaypoint = waypoints[targetWaypointIndex].position;
+                    targetWaypoint = _path[targetWaypointIndex];
                 }
             }
             yield return null;
         }
-
-        Destroy(gameObject);
     }
-
 
     protected bool IsPlayerClose()
     {
@@ -160,5 +160,15 @@ public abstract class Enemy : MonoBehaviour {
     public enum EnemyState
     {
         MOVE, ATTACK, IDLE, DEATH
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (path != null) {
+            Gizmos.color = Color.blue;
+            foreach (Node n in path) {
+                Gizmos.DrawSphere(new Vector2(n.position.x - 11.5f, n.position.y - 5.5f), 0.1f);
+            }
+        }
     }
 }
