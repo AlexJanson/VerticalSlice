@@ -16,7 +16,7 @@ public class EnemyHealthBar : MonoBehaviour {
         slider = GetComponent<Slider>();
         enemy = GetComponentInParent<Enemy>();
         enemy.enemyDamageAction += UpdateHealthBar;
-        slider.GetComponent<Image>().color = Color.green;
+        slider.fillRect.GetComponent<Image>().color = Color.green;
 	}
 
     private void UpdateHealthBar(float health, float damage)
