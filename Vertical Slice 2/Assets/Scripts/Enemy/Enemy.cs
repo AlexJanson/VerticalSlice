@@ -37,6 +37,8 @@ public abstract class Enemy : MonoBehaviour {
 
     private GridManager gridManager;
 
+    private IEnumerator followEnumerator;
+
     public abstract void Attack();
 
     private void SetState(EnemyState enemyState)
@@ -76,11 +78,19 @@ public abstract class Enemy : MonoBehaviour {
                 pathWorldPosition.Add(AStarPath.GetTileWorldPosition(path[i].position));
             }
 
-            StartCoroutine(FollowPath(pathWorldPosition));
+            if (followEnumerator != null)
+            {
+
+                StopCoroutine(followEnumerator);
+            }
+
+            followEnumerator = FollowPath(pathWorldPosition, player.transform.position);
+
+            StartCoroutine(followEnumerator);
         }
     }
 
-    IEnumerator FollowPath(List<Vector2> _path)
+    IEnumerator FollowPath(List<Vector2> _path, Vector3 playerPosition)
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position = _path[0], moveSpeed * Time.deltaTime);
 
@@ -88,7 +98,12 @@ public abstract class Enemy : MonoBehaviour {
         Vector3 targetWaypoint = _path[targetWaypointIndex];
 
         while ((Vector2)transform.position != _path[_path.Count - 1]) {
-            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, moveSpeed * Time.deltaTime);
+            if (playerPosition != player.transform.position)
+            {
+                yield return null;
+            }
+
+            transform.position = Vector2.MoveTowards(transform.position, targetWaypoint, moveSpeed * Time.deltaTime);
             if (transform.position == targetWaypoint) {
                 if (targetWaypointIndex < _path.Count - 1) {
                     targetWaypointIndex++;
@@ -107,7 +122,11 @@ public abstract class Enemy : MonoBehaviour {
 
             if (isClose)
             {
-                StopCoroutine(FollowPath(null));
+                if (followEnumerator != null)
+                {
+                    StopCoroutine(followEnumerator);
+                    followEnumerator = null;
+                }
             }
 
             return isClose;
