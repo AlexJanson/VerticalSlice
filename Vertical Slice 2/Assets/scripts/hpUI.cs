@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class hpUI : MonoBehaviour {
 
     public Image HeartFilled;
-<<<<<<< HEAD
+
     public GameObject healthPercentage;
     private PlayerDeath playerDeath;
-=======
+
     //public GameObject healthPercentage;
     private player Player;
     public GameObject UIscripts;
->>>>>>> ui
+
     private float begin;
     static float t = 0.0f;
 
@@ -43,17 +43,15 @@ public class hpUI : MonoBehaviour {
 
         if (playerDeath == null) return;
 
-<<<<<<< HEAD
         if(playerDeath.health != begin) {
 
             HeartFilled.fillAmount = Mathf.Lerp( (begin/100.0f), (playerDeath.health / 100.0f), t);
             t += 1.0f * Time.deltaTime;
             healthPercentage.GetComponent<Text>().text = "" + Mathf.Round(HeartFilled.fillAmount * 100f);
-=======
+
             HeartFilled.fillAmount = Mathf.Lerp( (begin/100.0f), (Player.hp/100.0f), t);
             t += 0.5f * Time.deltaTime;
             //healthPercentage.GetComponent<Text>().text = Player.hp.ToString();
->>>>>>> ui
         }
 
         if (t > 1.0f) {
