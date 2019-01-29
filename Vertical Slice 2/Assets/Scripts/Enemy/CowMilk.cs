@@ -56,7 +56,7 @@ public class CowMilk : MonoBehaviour
 
         } else
 
-        if (Vector2.Distance(playerDeath.gameObject.transform.position, gameObject.transform.position) < 4)
+        if (Vector2.Distance(playerDeath.gameObject.transform.position, gameObject.transform.position) < 1)
         {
             Hit();
         }

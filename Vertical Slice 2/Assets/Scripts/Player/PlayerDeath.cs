@@ -48,6 +48,16 @@ public class PlayerDeath : MonoBehaviour {
         }
     }
 
+    public void Heal(float _health)
+    {
+
+        health += _health;
+
+
+        if (health > 100)
+            health = 100;
+    }
+
     [SerializeField]
     private float knockbackSpeed;
 
