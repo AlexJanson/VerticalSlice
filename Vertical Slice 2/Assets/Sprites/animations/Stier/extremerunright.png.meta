@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 784637d9c255f144184b064fba4dac8a
+guid: 75538bd0f4d6fd446bea4c93a5aff9ff
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Boerin_idle_sheet_0
-    21300002: Boerin_idle_sheet_1
-    21300004: Boerin_idle_sheet_2
+    21300000: extremerunright_0
+    21300002: extremerunright_1
+    21300004: extremerunright_2
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -34,7 +34,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -100
+    mipBias: -1
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -85,13 +85,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boerin_idle_sheet_0
+      name: extremerunright_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 552
-        height: 670
+        width: 1406
+        height: 683
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,19 +99,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 796f00fbde6a09d439b17fcb89990dfb
+      spriteID: b064efe475ae1a24386759f1ab2bb475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boerin_idle_sheet_1
+      name: extremerunright_1
       rect:
         serializedVersion: 2
-        x: 552
+        x: 1406
         y: 0
-        width: 552
-        height: 674
+        width: 1406
+        height: 683
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,19 +119,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d805294ec8f853646aaccd628c6eae86
+      spriteID: 6b246ae6437d0064996efdc0074b9d82
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boerin_idle_sheet_2
+      name: extremerunright_2
       rect:
         serializedVersion: 2
-        x: 1104
+        x: 2812
         y: 0
-        width: 552
-        height: 650
+        width: 1406
+        height: 683
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ac27c52309fdc44d95cc5645e84c9be
+      spriteID: 2b473013b6c99e2499f7f9b599f388f8
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 637a60d094b33184c863f8a156301021
+    spriteID: 905f3ccdcce54cc419558b435a01fb4d
     vertices: []
     indices: 
     edges: []
