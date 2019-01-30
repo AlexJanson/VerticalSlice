@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pig : Enemy {
+public class Pig : Enemy
+{
 
     public override void Attack()
     {
@@ -22,7 +23,7 @@ public class Pig : Enemy {
     void FixedUpdate()
     {
         if (IsPlayerClose()) return;
-            if (player != null)
-                Move(player.transform.position);
+        if (player != null)
+            Move(player.transform.position);
     }
 }

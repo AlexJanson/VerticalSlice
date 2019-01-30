@@ -19,7 +19,7 @@ public class movement : MonoBehaviour {
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        float isRight=0;
+        float isRight = 0;
         float isBack = 0;
         Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pz.z = 0;
