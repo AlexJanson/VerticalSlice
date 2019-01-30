@@ -9,7 +9,7 @@ public class Pig : Enemy
     {
         if (!CanAttack()) return;
 
-        //TODO DO Tackle
+        player.Damage(baseDamage, gameObject);
 
 
     }
