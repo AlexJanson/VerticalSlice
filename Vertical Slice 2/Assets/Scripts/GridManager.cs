@@ -22,7 +22,7 @@ public class GridManager : MonoBehaviour {
     public void GenerateGrid() {
         map = CreateNodesFromTilemaps.CreateNodes(grid, floor, obstacleLayers, transform);
 
-        SpawnNodes(map, false);
+        SpawnNodes(map, true);
         AStarPath.SaveMap(map);
 
         path = AStarPath.FindPath(new Vector2(-7.9f, -.2f), new Vector2(-.1f, -.1f));

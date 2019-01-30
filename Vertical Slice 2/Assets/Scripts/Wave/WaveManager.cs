@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class WaveManager : MonoBehaviour {
     
     public List<WaveData> waveDatas = new List<WaveData>(); 
     private SpawnManager spawnManager;
+
+    public event Action<int> startNewWaveAction;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +29,13 @@ public class WaveManager : MonoBehaviour {
     {
         this.wave = wave;
 
+        startNewWaveAction(wave);
+
+        if (wave > 3)
+        {
+            return;
+        }
+
         int index = wave - 1;
 
         for (int i = 0; i < waveDatas[index].cow; i++)
@@ -38,6 +48,8 @@ public class WaveManager : MonoBehaviour {
             spawnManager.remainingEnemies.Add(spawnManager.enemies[1]);
 
         }
+
+        spawnManager.spawnedEnemies = spawnManager.remainingEnemies.Count;
     }
 
 

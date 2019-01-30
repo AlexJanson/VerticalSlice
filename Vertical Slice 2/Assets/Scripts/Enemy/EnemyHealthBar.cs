@@ -15,6 +15,7 @@ public class EnemyHealthBar : MonoBehaviour {
 	void Start () {
         slider = GetComponent<Slider>();
         enemy = GetComponentInParent<Enemy>();
+
         enemy.enemyDamageAction += UpdateHealthBar;
         slider.fillRect.GetComponent<Image>().color = Color.green;
 	}

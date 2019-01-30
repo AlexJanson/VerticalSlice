@@ -37,6 +37,8 @@ public abstract class Enemy : MonoBehaviour {
 
     private GridManager gridManager;
 
+    private SpawnManager spawnManager;
+
     private IEnumerator followEnumerator;
 
     public abstract void Attack();
@@ -48,7 +50,7 @@ public abstract class Enemy : MonoBehaviour {
         //TODO EDIT ANIMATION STATE VARIABLE
     }
 
-    private void Start()
+    void Start()
     {
         //  animator = GetComponent<Animator>();
 
@@ -58,6 +60,10 @@ public abstract class Enemy : MonoBehaviour {
         state = EnemyState.IDLE;
 
         gridManager = FindObjectOfType<GridManager>();
+
+        spawnManager = FindObjectOfType<SpawnManager>();
+
+        animator = GetComponent<Animator>();
     }
 
     protected void Move(Vector2 position)
@@ -102,6 +108,8 @@ public abstract class Enemy : MonoBehaviour {
             {
                 yield return null;
             }
+
+            Debug.Log(transform.position.x - targetWaypoint.x);
 
             transform.position = Vector2.MoveTowards(transform.position, targetWaypoint, moveSpeed * Time.deltaTime);
             if (transform.position == targetWaypoint) {
@@ -167,6 +175,8 @@ public abstract class Enemy : MonoBehaviour {
         {
             health = 0;
 
+            spawnManager.EnemyDeath();
+
             Destroy(gameObject);
         }
 
@@ -189,5 +199,10 @@ public abstract class Enemy : MonoBehaviour {
                 Gizmos.DrawSphere(new Vector2(n.position.x - 11.5f, n.position.y - 5.5f), 0.1f);
             }
         }
+    }
+
+    public enum Direction
+    {
+        UP, DOWN, LEFT, RIGHT
     }
 }
