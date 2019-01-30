@@ -6,17 +6,26 @@ using UnityEngine.UI;
 public class wavecounter : MonoBehaviour {
 
     public GameObject UIscripts;
-    private player Player;
     public GameObject Wavecounter;
+
+    private WaveManager waveManager;
+
 
     // Use this for initialization
     void Start () {
-        Player = UIscripts.GetComponent<player>();
+        waveManager = FindObjectOfType<WaveManager>();
+
+        waveManager.startNewWaveAction += UpdateWaveCounter;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Wavecounter.GetComponent<Text>().text = "Waves : "+Player.waves.ToString();
 
+
+    }
+
+    private void UpdateWaveCounter(int wave)
+    {
+        Wavecounter.GetComponent<Text>().text = "Waves : " + wave.ToString();
     }
 }
