@@ -1,15 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
+    [SerializeField]
+    private float minimalEnemySpawnDelay;
+    [SerializeField]
+    private float maximumEnemySpawnDelay;
+
     private EnemySpawn[] enemySpawns;
 
     public List<GameObject> enemies;
 
-    private float enemySpawnDelayInSeconds;
+    public int spawnedEnemies;
 
+    private float enemySpawnDelayInSeconds;
     
     public List<GameObject> remainingEnemies;
 
@@ -17,8 +24,9 @@ public class SpawnManager : MonoBehaviour {
 
     private WaveManager waveManager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
         enemySpawns = FindObjectsOfType<EnemySpawn>();
         canSpawnEnemy = true;
 
@@ -28,7 +36,7 @@ public class SpawnManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (!canSpawnEnemy) return;
-        enemySpawnDelayInSeconds = Random.Range(0.5f, 2f);
+        enemySpawnDelayInSeconds = UnityEngine.Random.Range(minimalEnemySpawnDelay, maximumEnemySpawnDelay);
 
         SpawnEnemy();
 
@@ -39,16 +47,34 @@ public class SpawnManager : MonoBehaviour {
     {
         if (enemySpawns.Length == 0 || enemies.Count == 0 || remainingEnemies.Count == 0) return;
 
-        int index = Random.Range(0, remainingEnemies.Count -1);
+        int index = UnityEngine.Random.Range(0, remainingEnemies.Count -1);
 
         GameObject enemyObject = remainingEnemies[index];
 
-        int i = Random.Range(0, enemySpawns.Length);
+        int i = UnityEngine.Random.Range(0, enemySpawns.Length);
 
-        enemySpawns[i].Spawn(enemyObject);
+        EnemySpawn enemySpawn = enemySpawns[i];
+
+        enemySpawn.Spawn(enemyObject);
 
         remainingEnemies.Remove(enemyObject);
 
+    }
+
+    public void EnemyDeath()
+    {
+        spawnedEnemies -= 1;
+
+        if (spawnedEnemies < 0)
+        {
+            spawnedEnemies = 0;
+        }
+
+        if (spawnedEnemies == 0)
+        {
+            int wave = waveManager.wave;
+            waveManager.SetWave(wave + 1);
+        }
     }
 
     private IEnumerator SpawnCooldown()

@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 212351404417240098}
   - component: {fileID: 114181951781761978}
   - component: {fileID: 61372165742789464}
+  - component: {fileID: 95975540073459922}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -216,6 +217,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.1, y: 5.67}
   m_EdgeRadius: 0
+--- !u!95 &95975540073459922
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524927510807978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5708348845272934b8653969ced52584, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114062362177511162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,8 +318,8 @@ MonoBehaviour:
   player: {fileID: 0}
   maxHealth: 100
   attackCooldownInSeconds: 2
-  attackRange: 40
-  moveSpeed: 10
+  attackRange: 5
+  moveSpeed: 2
   baseDamage: 20
   projectile: {fileID: 1459409896473656, guid: 5fe7288c6f91da049bd9c57c80eb2f43, type: 2}
 --- !u!114 &114289346653423992
