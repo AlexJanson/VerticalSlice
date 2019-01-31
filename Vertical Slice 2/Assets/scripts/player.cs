@@ -7,4 +7,5 @@ public class player : MonoBehaviour {
     public float hp = 100f;
     public int ammo = 30;
     public int plank = 3;
+    public int waves = 3;
 }

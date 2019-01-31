@@ -1,5 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 m_EditorVersion: 2018.2.11f1
 =======
 m_EditorVersion: 2018.2.17f1
 >>>>>>> 247655aa3a1d05e26788887dc8e38c2f1160687d
+=======
+m_EditorVersion: 2018.2.18f1
+>>>>>>> ui
+=======
+m_EditorVersion: 2018.2.11f1
+>>>>>>> Movement
+=======
+m_EditorVersion: 2018.2.17f1
+>>>>>>> player-shooting

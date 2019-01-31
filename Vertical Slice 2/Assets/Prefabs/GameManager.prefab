@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4296428071856298}
   - component: {fileID: 114567089471954952}
+  - component: {fileID: 114616811567117678}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33,8 +34,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1380346790015838}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.35, y: 0.07, z: -0.13586016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +52,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4add382b5d0d01444a705923d3bd9ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimalEnemySpawnDelay: 0.5
+  maximumEnemySpawnDelay: 2
   enemies:
   - {fileID: 1524927510807978, guid: eaf98c5d0f9e707438c68018830b8715, type: 2}
-  enemySpawnDelayInSeconds: 10
-  maxEnemies: 2
+  - {fileID: 1738074646438672, guid: a23accdcdbb465d44a4d7ab380e3976e, type: 2}
+  spawnedEnemies: 0
+  remainingEnemies: []
+--- !u!114 &114616811567117678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380346790015838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37be5315964de764ca376dbac62972c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: 0
+  waveDatas:
+  - cow: 3
+    pig: 6
+  - cow: 5
+    pig: 12
+  - cow: 8
+    pig: 15
