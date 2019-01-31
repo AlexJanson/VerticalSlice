@@ -1,9 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip shoot;
+
+    [SerializeField]
+    private AudioClip empty;
+
+    [SerializeField]
+    private AudioClip reload;
+
+    [SerializeField]
+    private AudioSource AudioSource;
+
+
+    public event Action<int> playerShootAction;
 
     public float speed = 3f;
 
@@ -36,6 +51,17 @@ public class PlayerShoot : MonoBehaviour
             nextFire = Time.time + fireDelay;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, direction.y * speed);
+
+            AudioSource.PlayOneShot(shoot, 1);
+           
+        }
+        if (Input.GetMouseButtonDown(0) && currentAmmo == 0)
+        {
+            AudioSource.PlayOneShot(empty, 1);
+        }
+        if(MaxAmmo > 90)
+        {
+            MaxAmmo = 90;
         }
 
         Reload();
@@ -51,6 +77,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetKeyDown("r")) {
             if (currentAmmo < ammo && MaxAmmo > 0) {
 
+                AudioSource.PlayOneShot(reload, 1);
                 if (MaxAmmo - (ammo - currentAmmo) < 0) {
                     int missingBullets = ((ammo - currentAmmo) - MaxAmmo);
                     currentAmmo = ammo;

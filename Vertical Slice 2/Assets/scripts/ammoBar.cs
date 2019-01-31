@@ -3,39 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ammoBar : MonoBehaviour {
+public class ammoBar : MonoBehaviour
+{
 
     public Image AmmoFilled;
-    //public GameObject AmmoCounter;
+    public GameObject AmmoCounter;
     private player Player;
     public GameObject UIscripts;
-    private float begin;
-    static float t = 0.0f;
+    //public Text UIallAmmo;
+    public Text UIAmmo;
+
+    private PlayerShoot playerUpdateClip;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        playerUpdateClip = FindObjectOfType<PlayerShoot>();
+        playerUpdateClip.playerShootAction += UpdateAmmo;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Player = UIscripts.GetComponent<player>();
         AmmoFilled.type = Image.Type.Filled;
         AmmoFilled.fillMethod = Image.FillMethod.Horizontal;
-        Player = UIscripts.GetComponent<player>();
-        begin = Player.ammo;
+
+        UIAmmo.text = playerUpdateClip.currentAmmo + "/" + playerUpdateClip.MaxAmmo;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        Player = UIscripts.GetComponent<player>();
 
-        if (Player.ammo != begin)
-        {
-
-            AmmoFilled.fillAmount = Mathf.Lerp((begin / 30.0f), (Player.ammo / 30.0f), t);
-            t += 0.5f * Time.deltaTime;
-            //AmmoCounter.GetComponent<Text>().text = Player.ammo.ToString();
-        }
-
-        if (t > 1.0f)
-        {
-            begin = Player.ammo;
-            t = 0.0f;
-        }
+    private void UpdateAmmo(int ammo)
+    {
+        AmmoFilled.fillAmount = ammo / 30f;
+        AmmoCounter.GetComponent<Text>().text = ammo.ToString();
     }
+
+
 }
+

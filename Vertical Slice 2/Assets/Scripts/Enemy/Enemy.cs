@@ -86,7 +86,6 @@ public abstract class Enemy : MonoBehaviour {
 
             if (followEnumerator != null)
             {
-
                 StopCoroutine(followEnumerator);
             }
 

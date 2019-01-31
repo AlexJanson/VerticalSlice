@@ -10,11 +10,9 @@ public class CollisionListener : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            if (collision.gameObject.tag == "ammo")
-            {
-             Destroy(collision.gameObject);
-            if (ammoCollected != null)
-              ammoCollected();
-            }            
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
