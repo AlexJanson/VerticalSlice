@@ -74,10 +74,6 @@ public static class CreateNodesFromTilemaps
             }
         }
 
-        /*foreach(GameObject item in nodes) {
-            Debug.Log(item);
-        }*/
-
         NodeData[,] map = new NodeData[gridSizeX + 1, gridSizeY];
         foreach(NodeData n in nodes) {
             Vector3 nodePos = new Vector3(Mathf.Floor(n.position.x + 12), Mathf.Floor(n.position.y + 6), 0f);

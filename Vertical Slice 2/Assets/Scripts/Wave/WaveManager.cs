@@ -29,8 +29,9 @@ public class WaveManager : MonoBehaviour {
     {
         this.wave = wave;
 
-        startNewWaveAction(wave);
-
+        if(startNewWaveAction != null)
+            startNewWaveAction(wave);
+            
         if (wave > 3)
         {
             return;

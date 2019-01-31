@@ -251,7 +251,7 @@ MonoBehaviour:
   player: {fileID: 0}
   maxHealth: 100
   attackCooldownInSeconds: 4
-  attackRange: 1
+  attackRange: 2
   moveSpeed: 2
   baseDamage: 10
 --- !u!114 &114404238185184198
