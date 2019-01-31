@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 791070dc11408644a8c4a220cd31430c
+guid: a156df576738c734ab691b1a39370bfa
 TextureImporter:
   fileIDToRecycleName:
-    21300000: attack varken links_0
-    21300002: attack varken links_1
-    21300004: attack varken links_2
-    21300006: attack varken links_3
-    21300008: attack varken links_4
-    21300010: attack varken links_5
+    21300000: walk cycle varken left_0
+    21300002: walk cycle varken left_1
+    21300004: walk cycle varken left_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -101,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack varken links_0
+      name: walk cycle varken left_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 446.5
+        y: 446
         width: 465
-        height: 446.5
+        height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,19 +112,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f1c538ec455eda44a158d20abc3da52
+      spriteID: 7179714bdaa775e43a714d18f47617d0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack varken links_1
+      name: walk cycle varken left_1
       rect:
         serializedVersion: 2
         x: 465
-        y: 446.5
+        y: 446
         width: 465
-        height: 446.5
+        height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,59 +132,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 616d3bcf26b387b4fa2abecc7f69ea92
+      spriteID: 49901bcb29027354190158658f201f73
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack varken links_2
-      rect:
-        serializedVersion: 2
-        x: 930
-        y: 446.5
-        width: 465
-        height: 446.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17ec054549114324aa886f345603ae66
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack varken links_3
-      rect:
-        serializedVersion: 2
-        x: 1395
-        y: 446.5
-        width: 465
-        height: 446.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45ca5a14cb84c0e4fa346c76eb10bbd1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack varken links_4
+      name: walk cycle varken left_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 0.5
+        y: 0
         width: 465
-        height: 446.5
+        height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,27 +152,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2395e7fdad2736b49adb073c5d1ce314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack varken links_5
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 0.5
-        width: 465
-        height: 446.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1de3535e1a47b741910ebe86ba1aa0a
+      spriteID: 4447a91972f248b4898123ca4e82ce1a
       vertices: []
       indices: 
       edges: []
@@ -223,7 +160,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0c617d4a2cbdce0488460ac782d052f1
+    spriteID: 6b7c423c8061ca943a4ac61c74eeee1a
     vertices: []
     indices: 
     edges: []
