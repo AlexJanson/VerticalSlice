@@ -16,6 +16,5 @@ public class BoerinAnimation : MonoBehaviour
     private void PointAnimation(int wave)
     {
         anim.Play("Point animation2");
-        Debug.Log("Called");
     }
 }
