@@ -17,8 +17,6 @@ public class AmmoUpdater : MonoBehaviour {
 
     private void VariableChangeHandler(float newVal)
     {
-        //doe iets
-        //Debug.Log("Waardeverandering player. Ammocounter aanpassen.");
         AmmoCounter.GetComponent<Text>().text = Player.ammo.ToString();
     }
 }

@@ -4671,7 +4671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071533494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.39, y: -3.65, z: -0.103515625}
+  m_LocalPosition: {x: 6.39, y: -3.76, z: -0.103515625}
   m_LocalScale: {x: 8.999477, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1167439503}
@@ -6130,6 +6130,7 @@ GameObject:
   - component: {fileID: 1442619062}
   - component: {fileID: 1442619061}
   - component: {fileID: 1442619060}
+  - component: {fileID: 1442619065}
   m_Layer: 5
   m_Name: UIScripts
   m_TagString: Untagged
@@ -6208,6 +6209,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1442619065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442619059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79b7845ca71b3e4fa89baf34b04cf9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmmoFilled: {fileID: 0}
+  AmmoCounter: {fileID: 0}
+  UIscripts: {fileID: 0}
+  UIAmmo: {fileID: 0}
 --- !u!1 &1480310958
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,10 +6376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af71756375d3d0544a49fa61e6fbc9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  floor: {fileID: 0}
-  obstacleLayers: []
-  nodePrefab: {fileID: 0}
+  grid: {fileID: 1076679141}
+  floor: {fileID: 367704670}
+  obstacleLayers:
+  - {fileID: 1263589010}
+  - {fileID: 690582494}
+  nodePrefab: {fileID: 1175597452242116, guid: 021d559f280cd1f41bc684ff0d72389f, type: 3}
 --- !u!1 &1741593795
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,10 +6652,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c954067162651a948be4bcd3b096fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bridgeManager: {fileID: 0}
-  bridges: []
-  UIscripts: {fileID: 0}
-  sr: {fileID: 0}
+  bridgeManager: {fileID: 2060793938}
+  bridges:
+  - {fileID: 21300000, guid: cf391496c841f5241b328889da7d380f, type: 3}
+  - {fileID: 21300000, guid: a4afed3426760e64cb52024d1d9afb35, type: 3}
+  - {fileID: 21300000, guid: 45b95e25a82a5af44ae93d7b2775a420, type: 3}
+  - {fileID: 21300000, guid: b185432938f301f46a989472fe56fc74, type: 3}
+  UIscripts: {fileID: 1442619059}
+  sr: {fileID: 2060793940}
 --- !u!212 &2060793940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6797,5 +6820,10 @@ PrefabInstance:
       propertyPath: AudioSource
       value: 
       objectReference: {fileID: 1326638542}
+    - target: {fileID: 7952173998334199919, guid: 800795eb7f9c5114e90ed98e67b87c2b,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 800795eb7f9c5114e90ed98e67b87c2b, type: 3}
