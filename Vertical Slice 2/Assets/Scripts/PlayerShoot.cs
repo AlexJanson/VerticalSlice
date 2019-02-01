@@ -17,6 +17,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private AudioSource AudioSource;
 
+    public GameObject ammoBag;
+
 
     public event Action<int> playerShootAction;
 
@@ -62,6 +64,12 @@ public class PlayerShoot : MonoBehaviour
         if(MaxAmmo > 90)
         {
             MaxAmmo = 90;
+        }
+
+        if (Vector2.Distance(ammoBag.transform.position, gameObject.transform.position) < 1.5f) {
+            if (Input.GetKeyDown("e")) {
+                MaxAmmo += 30;
+            }
         }
 
         Reload();
