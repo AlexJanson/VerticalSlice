@@ -27,7 +27,7 @@ public class Bridge : MonoBehaviour
     void Update()
     {
         repairBridge();
-        plankAmount = UIscripts.GetComponent<player>().plank;
+        plankAmount = FindObjectOfType<WaveManager>().wave;
     }
 
     private void repairBridge()

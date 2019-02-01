@@ -6201,7 +6201,6 @@ GameObject:
   - component: {fileID: 1442619064}
   - component: {fileID: 1442619063}
   - component: {fileID: 1442619062}
-  - component: {fileID: 1442619061}
   - component: {fileID: 1442619060}
   m_Layer: 5
   m_Name: UIScripts
@@ -6223,22 +6222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIscripts: {fileID: 1442619059}
---- !u!114 &1442619061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442619059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e5ea87e8c2cfd41abd58267ff1084d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
-  ammo: 30
-  plank: 3
-  waves: 3
 --- !u!114 &1442619062
 MonoBehaviour:
   m_ObjectHideFlags: 0
