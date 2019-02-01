@@ -27,9 +27,9 @@ public class CowMilk : MonoBehaviour
     void Start()
     {
 
-        point[0] = gameObject.transform.position;
+        point[0] = transform.position;
 
-        point[2] = playerDeath.gameObject.transform.position;
+        point[2] = playerDeath.transform.position;
 
         point[1] = point[0] + (point[2] - point[0]) / 2 + Vector2.up * 6.0f;
 
@@ -50,13 +50,7 @@ public class CowMilk : MonoBehaviour
             return;
         }
 
-        if (Vector2.Distance(point[0], gameObject.transform.position) >= (journeyLength))
-        {
-            Destroy(gameObject);
-
-        } else
-
-        if (Vector2.Distance(playerDeath.gameObject.transform.position, gameObject.transform.position) < 1)
+        if (Vector2.Distance(playerDeath.transform.position, transform.position) < 1)
         {
             Hit();
         }

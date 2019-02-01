@@ -10,13 +10,12 @@ public class PlayerDeath : MonoBehaviour {
     public event Action<float, GameObject> playerDamageAction;
     public event Action playerDeathAction;
 
-    void Awake()
-    {
-        
-    }
+    private Animator animator;
 
     // Use this for initialization
     void Start () {
+        animator = GetComponent<Animator>();
+
         playerDamageAction += Knockback;
         playerDeathAction += Death;
 	}
@@ -34,9 +33,6 @@ public class PlayerDeath : MonoBehaviour {
 
         health -= damage;
 
-        if (playerDamageAction != null)
-        playerDamageAction(damage, enemy);
-
         if (health <= 0)
         {
             health = 0;
@@ -46,6 +42,9 @@ public class PlayerDeath : MonoBehaviour {
 
             return;
         }
+
+        if (playerDamageAction != null)
+            playerDamageAction(damage, enemy);
     }
 
     public void Heal(float _health)
@@ -106,6 +105,12 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void Death()
+    {
+
+        animator.Play("player_death", 0, 0.0f);
+    }
+
+    private void RemovePlayer()
     {
         Destroy(gameObject);
     }
