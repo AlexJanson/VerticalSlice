@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 12c5f89dc6b7d434c8517fa85eb78004
+=======
+guid: 2d4cc0056eae89a44aec90aae699aca5
+>>>>>>> enemy-damage
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -75,7 +79,11 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: c5ef20008213f8e468477d5ae33f1f37
+=======
+    spriteID: cc2239a65ba416b4f9d8a737aaf4b20c
+>>>>>>> enemy-damage
     vertices: []
     indices: 
     edges: []

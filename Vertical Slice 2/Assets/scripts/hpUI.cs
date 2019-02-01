@@ -8,35 +8,53 @@ public class hpUI : MonoBehaviour
 
     public Image HeartFilled;
     //public GameObject healthPercentage;
-    private player Player;
-    public GameObject UIscripts;
     private float begin;
     static float t = 0.0f;
+
+    private PlayerDeath playerDeath;
+
+    [SerializeField]
+    private Text hp;
+
+    private bool updateHealth;
+    
 
     // Use this for initialization
     void Start()
     {
         HeartFilled.type = Image.Type.Filled;
         HeartFilled.fillMethod = Image.FillMethod.Vertical;
-        Player = UIscripts.GetComponent<player>();
-        begin = Player.hp;
+
+        playerDeath = FindObjectOfType<PlayerDeath>();
+
+        begin = playerDeath.health;
+
+        playerDeath.playerDamageAction += UpdateHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Player = UIscripts.GetComponent<player>();
+        if (!updateHealth) return;
 
-        if (Player.hp != begin) {
-
-            HeartFilled.fillAmount = Mathf.Lerp((begin / 100.0f), (Player.hp / 100.0f), t);
-            t += 0.5f * Time.deltaTime;
-            //healthPercentage.GetComponent<Text>().text = Player.hp.ToString();
+        if (HeartFilled.fillAmount == playerDeath.health / 100.0f)
+        {
+            updateHealth = false;
+            return;
         }
 
-        if (t > 1.0f) {
-            begin = Player.hp;
+        HeartFilled.fillAmount = Mathf.Lerp((begin / 100.0f), (playerDeath.health / 100.0f), t);
+        t += 0.5f * Time.deltaTime;
+        hp.text = playerDeath.health.ToString();
+
+        if (t > 1.0f)
+        {
+            begin = playerDeath.health;
             t = 0.0f;
         }
+    }
+
+    private void UpdateHealth(float damage, GameObject gameObject)
+    {
+        updateHealth = true;
     }
 }
