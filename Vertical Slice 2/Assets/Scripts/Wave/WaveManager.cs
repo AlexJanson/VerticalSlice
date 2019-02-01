@@ -29,15 +29,13 @@ public class WaveManager : MonoBehaviour {
     {
         this.wave = wave;
 
-<<<<<<< HEAD
+
         if(startNewWaveAction != null)
             startNewWaveAction(wave);
             
-=======
         if (startNewWaveAction != null)
         startNewWaveAction(wave);
-
->>>>>>> enemy-damage
+        
         if (wave > 3)
         {
             return;

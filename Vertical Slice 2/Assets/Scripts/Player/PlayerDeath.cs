@@ -12,11 +12,11 @@ public class PlayerDeath : MonoBehaviour {
 
     private Animator animator;
 
+    bool dead = false;
+
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
-
-        playerDamageAction += Knockback;
         playerDeathAction += Death;
 	}
 	
@@ -106,8 +106,10 @@ public class PlayerDeath : MonoBehaviour {
 
     private void Death()
     {
-
-        animator.Play("player_death", 0, 0.0f);
+        if (!dead) {
+            animator.Play("player_death", 0, 0.0f);
+            dead = true;
+        }
     }
 
     private void RemovePlayer()

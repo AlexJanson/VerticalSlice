@@ -107,12 +107,9 @@ public abstract class Enemy : MonoBehaviour {
             {
                 yield return null;
             }
-
-<<<<<<< HEAD
-=======
+            
            // Debug.Log(transform.position.x - targetWaypoint.x);
-
->>>>>>> enemy-damage
+           
             transform.position = Vector2.MoveTowards(transform.position, targetWaypoint, moveSpeed * Time.deltaTime);
             if (transform.position == targetWaypoint) {
                 if (targetWaypointIndex < _path.Count - 1) {
